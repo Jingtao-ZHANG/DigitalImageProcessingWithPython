@@ -37,10 +37,12 @@ image_dct_1 = copy.deepcopy(img_dct)
 image_dct_2 = copy.deepcopy(img_dct)
 image_dct_3 = copy.deepcopy(img_dct)
 
+# 此处为显示
 image_dct_log_1 = 20*np.log(abs(image_dct_1))
 image_dct_log_2 = 20*np.log(abs(image_dct_2))
 image_dct_log_3 = 20*np.log(abs(image_dct_3))
 
+# 裁剪DCT
 for i in range(image_dct_1.shape[0]):
     for j in range(image_dct_1.shape[1]):
         if i > (256+128) or j > (256+128):
@@ -53,6 +55,7 @@ for i in range(image_dct_1.shape[0]):
             image_dct_3[i, j] = 0
             image_dct_log_3[i, j] = 0
 
+# 逆DCT
 img_back_1 = cv2.idct(image_dct_1)
 img_back_2 = cv2.idct(image_dct_2)
 img_back_3 = cv2.idct(image_dct_3)
